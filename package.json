@@ -1,0 +1,82 @@
+{
+  "name": "release-demo",
+  "version": "1.1.0",
+  "packageManager": "pnpm@^6",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "StEve YoUng <2747745470@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuptStEve/release-demo.git"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "commit": "git-cz",
+    "prepare": "husky install",
+    "build": "rimraf dist && unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "lint:fix": "nr lint --fix",
+    "prepublishOnly": "nr build",
+    "release": "HUSKY=0 bumpp --commit 'chore: v%s' --push --tag && npm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "check:type": "tsc --noEmit"
+  },
+  "homepage": "https://github.com/BuptStEve/release-demo#readme",
+  "bugs": {
+    "url": "https://github.com/BuptStEve/release-demo/issues"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.20.7",
+    "@antfu/ni": "^0.14.0",
+    "@babel/types": "^7.17.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@types/node": "^17.0.25",
+    "bumpp": "^7.1.1",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.14.0",
+    "esno": "^0.14.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.3",
+    "unbuild": "^0.7.4",
+    "vite": "^2.9.5",
+    "vitest": "^0.9.4"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,md}": [
+      "eslint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
