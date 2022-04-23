@@ -1,6 +1,6 @@
 {
   "name": "release-demo",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "packageManager": "pnpm@^6",
   "description": "",
   "keywords": [],
@@ -32,7 +32,7 @@
     "lint": "eslint .",
     "lint:fix": "nr lint --fix",
     "prepublishOnly": "nr build",
-    "release": "HUSKY=0 bumpp --commit 'chore: v%s' --push --tag && npm publish",
+    "release": "HUSKY=0 bumpp --commit --push --tag && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "check:type": "tsc --noEmit"
